@@ -5,9 +5,6 @@
         static void Main(string[] args)
         {
             string whatToConvert;
-            Length length = new Length();
-            Temperature temperature = new Temperature();
-            Weight weight = new Weight();
 
             Start();
 
@@ -21,22 +18,34 @@
                     case "length":
                     case "Length":
                         Console.Clear();
+                        Length length = new Length();
                         length.Start();
                         break;
                     case "temperature":
                     case "Temperature":
                         Console.Clear();
+                        Temperature temperature = new Temperature();
                         temperature.Start();
                         break;
                     case "weight":
                     case "Weight":
                         Console.Clear();
+                        Weight weight = new Weight();
                         weight.Start();
                         break;
                     default:
                         Console.Clear();
                         Start();
                         break;
+                }
+
+                Console.WriteLine("Do you want to use the converter again?");
+                string input = Console.ReadLine().ToLower();
+
+                if (input == "yes")
+                {
+                    Console.Clear();
+                    Start();
                 }
             }
         }
@@ -253,22 +262,37 @@
                     case "M":
                     case "m":
                         tryAgain = false;
+                        Console.Write("Miles: ");
+                        convertFromInt = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"{convertFromInt} miles are {(double)convertFromInt * 1609.34} meters.");
                         break;
                     case "cm":
                     case "CM":
                         tryAgain = false;
+                        Console.Write("Miles: ");
+                        convertFromInt = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"{convertFromInt} miles are {(double)convertFromInt * 160934.4} centimeters.");
                         break;
                     case "km":
                     case "KM":
                         tryAgain = false;
+                        Console.Write("Miles: ");
+                        convertFromInt = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"{convertFromInt} miles are {(double)convertFromInt * 1.60934} kilometers.");
                         break;
                     case "ft":
                     case "FT":
                         tryAgain = false;
+                        Console.Write("Miles: ");
+                        convertFromInt = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"{convertFromInt} miles are {(double)convertFromInt * 5280} feet.");
                         break;
                     case "in":
                     case "IN":
                         tryAgain = false;
+                        Console.Write("Miles: ");
+                        convertFromInt = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"{convertFromInt} miles are {(double)convertFromInt * 63.360} inches.");
                         break;
                     default:
                         Mile();
@@ -289,22 +313,37 @@
                     case "M":
                     case "m":
                         tryAgain = false;
+                        Console.Write("Feet: ");
+                        convertFromInt = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"{convertFromInt} feet are {(double)convertFromInt * 0.3048} meters.");
                         break;
                     case "cm":
                     case "CM":
-                        tryAgain = false;
+                        tryAgain = false; 
+                        Console.Write("Feet: ");
+                        convertFromInt = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"{convertFromInt} feet are {(double)convertFromInt * 30.48} centimeters.");
                         break;
                     case "km":
                     case "KM":
-                        tryAgain = false;
+                        tryAgain = false; 
+                        Console.Write("Feet: ");
+                        convertFromInt = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"{convertFromInt} feet are {(double)convertFromInt * 0.0003048} kilometers.");
                         break;
                     case "mile":
                     case "Mile":
-                        tryAgain = false;
+                        tryAgain = false; 
+                        Console.Write("Feet: ");
+                        convertFromInt = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"{convertFromInt} feet are {(double)convertFromInt / 5280} miles.");
                         break;
                     case "in":
                     case "IN":
-                        tryAgain = false;
+                        tryAgain = false; 
+                        Console.Write("Feet: ");
+                        convertFromInt = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"{convertFromInt} feet are {(double)convertFromInt * 12} inches.");
                         break;
                     default:
                         FT();
@@ -325,22 +364,37 @@
                     case "M":
                     case "m":
                         tryAgain = false;
+                        Console.Write("Inches: ");
+                        convertFromInt = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"{convertFromInt} inches are {(double)convertFromInt * 0.0254} meters.");
                         break;
                     case "cm":
                     case "CM":
                         tryAgain = false;
+                        Console.Write("Inches: ");
+                        convertFromInt = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"{convertFromInt} inches are {(double)convertFromInt * 2.54} centimeters.");
                         break;
                     case "km":
                     case "KM":
                         tryAgain = false;
+                        Console.Write("Inches: ");
+                        convertFromInt = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"{convertFromInt} inches are {(double)convertFromInt * 0.0000254} kilometers.");
                         break;
                     case "mile":
                     case "Mile":
                         tryAgain = false;
+                        Console.Write("Inches: ");
+                        convertFromInt = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"{convertFromInt} inches are {(double)convertFromInt / 63.36} miles.");
                         break;
                     case "ft":
                     case "FT":
                         tryAgain = false;
+                        Console.Write("Inches: ");
+                        convertFromInt = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"{convertFromInt} inches are {(double)convertFromInt / 12} feet.");
                         break;
                     default:
                         IN();
@@ -352,9 +406,118 @@
 
     class Temperature()
     {
+        string convertFrom;
+        string convertTo;
+        int convertFromInt;
+        private bool tryAgain = true;
+
         public void Start()
         {
+            Console.WriteLine("TEMPERATURE");
+            Console.WriteLine("--------------------------------------------------------------------------------");
+            Console.WriteLine("From what do you want to Convert?(C, F, K)");
+            convertFrom = Console.ReadLine().ToLower();
 
+            switch (convertFrom)
+            {
+                case "c":
+                    Celsius();
+                    break;
+                case "f":
+                    Fahrenheit();
+                    break;
+                case "k":
+                    Kelvin();
+                    break;
+                default:
+                    Console.Clear();
+                    Start();
+                    break;
+            }
+        }
+
+        void Celsius()
+        {
+            Console.WriteLine("Into what do you want to Convert?(F, K)");
+            convertTo = Console.ReadLine();
+
+            while (tryAgain)
+            {
+                switch (convertTo)
+                {
+                    case "f":
+                        tryAgain = false;
+                        Console.Write("Celsius: ");
+                        convertFromInt = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"{convertFromInt} Celsius are {((double)convertFromInt * ((double)9 / 5)) + 32} Fahrenheit.");
+                        break;
+                    case "k":
+                        tryAgain = false;
+                        Console.Write("Celsius: ");
+                        convertFromInt = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"{convertFromInt} Celsius are {(double)convertFromInt + 273.15} Kelvin.");
+                        break;
+                    default:
+                        Celsius();
+                        break;
+                }
+            }
+        }
+
+        void Fahrenheit()
+        {
+            Console.WriteLine("Into what do you want to Convert?(C, K)");
+            convertTo = Console.ReadLine();
+
+            while (tryAgain)
+            {
+                switch (convertTo)
+                {
+                    case "f":
+                        tryAgain = false;
+                        Console.Write("Fahrenheit: ");
+                        convertFromInt = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"{convertFromInt} Celsius are {((double)convertFromInt * ((double)9 / 5)) + 32} Fahrenheit.");
+                        break;
+                    case "k":
+                        tryAgain = false;
+                        Console.Write("Celsius: ");
+                        convertFromInt = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"{convertFromInt} Celsius are {(double)convertFromInt + 273.15} Kelvin.");
+                        break;
+                    default:
+                        Celsius();
+                        break;
+                }
+            }
+        }
+
+        void Kelvin()
+        {
+            Console.WriteLine("Into what do you want to Convert?(F, K)");
+            convertTo = Console.ReadLine();
+
+            while (tryAgain)
+            {
+                switch (convertTo)
+                {
+                    case "f":
+                        tryAgain = false;
+                        Console.Write("Celsius: ");
+                        convertFromInt = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"{convertFromInt} Celsius are {((double)convertFromInt * ((double)9 / 5)) + 32} Fahrenheit.");
+                        break;
+                    case "k":
+                        tryAgain = false;
+                        Console.Write("Celsius: ");
+                        convertFromInt = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"{convertFromInt} Celsius are {(double)convertFromInt + 273.15} Kelvin.");
+                        break;
+                    default:
+                        Celsius();
+                        break;
+                }
+            }
         }
     }
 
