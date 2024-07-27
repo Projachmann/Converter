@@ -473,20 +473,20 @@
             {
                 switch (convertTo)
                 {
-                    case "f":
+                    case "c":
                         tryAgain = false;
                         Console.Write("Fahrenheit: ");
                         convertFromInt = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine($"{convertFromInt} Celsius are {((double)convertFromInt * ((double)9 / 5)) + 32} Fahrenheit.");
+                        Console.WriteLine($"{convertFromInt} Fahrenheit are {((double)convertFromInt - 32) * ((double)5 / 9)} Celsius.");
                         break;
                     case "k":
                         tryAgain = false;
-                        Console.Write("Celsius: ");
+                        Console.Write("Fahrenheit: ");
                         convertFromInt = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine($"{convertFromInt} Celsius are {(double)convertFromInt + 273.15} Kelvin.");
+                        Console.WriteLine($"{convertFromInt} Fahrenheit are {(((double)convertFromInt - 32) * ((double)5 / 9)) + 273.15} Kelvin.");
                         break;
                     default:
-                        Celsius();
+                        Fahrenheit();
                         break;
                 }
             }
@@ -494,7 +494,7 @@
 
         void Kelvin()
         {
-            Console.WriteLine("Into what do you want to Convert?(F, K)");
+            Console.WriteLine("Into what do you want to Convert?(F, C)");
             convertTo = Console.ReadLine();
 
             while (tryAgain)
@@ -503,18 +503,18 @@
                 {
                     case "f":
                         tryAgain = false;
-                        Console.Write("Celsius: ");
+                        Console.Write("Kelvin: ");
                         convertFromInt = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine($"{convertFromInt} Celsius are {((double)convertFromInt * ((double)9 / 5)) + 32} Fahrenheit.");
+                        Console.WriteLine($"{convertFromInt} Kelvin are {(((double)convertFromInt - 273.15) * ((double)9 / 5)) + 32} Fahrenheit.");
                         break;
-                    case "k":
+                    case "c":
                         tryAgain = false;
-                        Console.Write("Celsius: ");
+                        Console.Write("Kelvin: ");
                         convertFromInt = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine($"{convertFromInt} Celsius are {(double)convertFromInt + 273.15} Kelvin.");
+                        Console.WriteLine($"{convertFromInt} Kelvin are {(double)convertFromInt - 273.15} Celsius.");
                         break;
                     default:
-                        Celsius();
+                        Kelvin();
                         break;
                 }
             }
@@ -523,7 +523,133 @@
 
     class Weight()
     {
+        string convertFrom;
+        string convertTo;
+        int convertFromInt;
+        private bool tryAgain = true;
+
         public void Start()
+        {
+            Console.WriteLine("WEIGHT");
+            Console.WriteLine("--------------------------------------------------------------------------------");
+            Console.WriteLine("From what do you want to Convert?(st, lb, oz, kg, g)");
+            convertFrom = Console.ReadLine().ToLower();
+
+            switch (convertFrom)
+            {
+                case "st":
+                    Stone();
+                    break;
+                case "lb":
+                    Pound();
+                    break;
+                case "oz":
+                    Ounce();
+                    break;
+                case "kg":
+                    Kilogram();
+                    break;
+                case "g":
+                    Gram();
+                    break;
+                default:
+                    Console.Clear();
+                    Start();
+                    break;
+            }
+        }
+
+        void Stone()
+        {
+            Console.WriteLine("Into what do you want to Convert?(lb, oz, kg, g)");
+            convertTo = Console.ReadLine();
+
+            while (tryAgain)
+            {
+                switch (convertTo)
+                {
+                    case "lb":
+                        tryAgain = false;
+                        Console.Write("Stone: ");
+                        convertFromInt = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"{convertFromInt} Stone are {(double)convertFromInt * 12} Pounds.");
+                        break;
+                    case "oz":
+                        tryAgain = false;
+                        Console.Write("Stone: ");
+                        convertFromInt = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"{convertFromInt} Stone are {(double)convertFromInt * 224} Ounces.");
+                        break;
+                    case "kg":
+                        tryAgain = false;
+                        Console.Write("Stone: ");
+                        convertFromInt = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"{convertFromInt} Stone are {(double)convertFromInt * 6.35029} Celsius.");
+                        break;
+                    case "g":
+                        tryAgain = false;
+                        Console.Write("Stone: ");
+                        convertFromInt = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"{convertFromInt} Stone are {(double)convertFromInt * 6350.29} Celsius.");
+                        break;
+                    default:
+                        Stone();
+                        break;
+                }
+            }
+        }
+
+        void Pound()
+        {
+            Console.WriteLine("Into what do you want to Convert?(st, oz, kg, g)");
+            convertTo = Console.ReadLine();
+
+            while (tryAgain)
+            {
+                switch (convertTo)
+                {
+                    case "st":
+                        tryAgain = false;
+                        Console.Write("Pound: ");
+                        convertFromInt = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"{convertFromInt} Pound are {(double)convertFromInt * 12} Stone.");
+                        break;
+                    case "oz":
+                        tryAgain = false;
+                        Console.Write("Pound: ");
+                        convertFromInt = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"{convertFromInt} Pound are {(double)convertFromInt * 224} Ounces.");
+                        break;
+                    case "kg":
+                        tryAgain = false;
+                        Console.Write("Pound: ");
+                        convertFromInt = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"{convertFromInt} Pound are {(double)convertFromInt * 6.35029} Celsius.");
+                        break;
+                    case "g":
+                        tryAgain = false;
+                        Console.Write("Pound: ");
+                        convertFromInt = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"{convertFromInt} Pound are {(double)convertFromInt * 6350.29} Celsius.");
+                        break;
+                    default:
+                        Stone();
+                        break;
+                }
+            }
+        }
+
+        void Ounce()
+        {
+
+        }
+
+        void Kilogram()
+        {
+
+        }
+
+        void Gram()
         {
 
         }
