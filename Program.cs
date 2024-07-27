@@ -612,28 +612,28 @@
                         tryAgain = false;
                         Console.Write("Pound: ");
                         convertFromInt = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine($"{convertFromInt} Pound are {(double)convertFromInt * 12} Stone.");
+                        Console.WriteLine($"{convertFromInt} Pound are {(double)convertFromInt / 14} Stone.");
                         break;
                     case "oz":
                         tryAgain = false;
                         Console.Write("Pound: ");
                         convertFromInt = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine($"{convertFromInt} Pound are {(double)convertFromInt * 224} Ounces.");
+                        Console.WriteLine($"{convertFromInt} Pound are {(double)convertFromInt * 16} Ounces.");
                         break;
                     case "kg":
                         tryAgain = false;
                         Console.Write("Pound: ");
                         convertFromInt = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine($"{convertFromInt} Pound are {(double)convertFromInt * 6.35029} Celsius.");
+                        Console.WriteLine($"{convertFromInt} Pound are {(double)convertFromInt * 0.453592} Kilogram.");
                         break;
                     case "g":
                         tryAgain = false;
                         Console.Write("Pound: ");
                         convertFromInt = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine($"{convertFromInt} Pound are {(double)convertFromInt * 6350.29} Celsius.");
+                        Console.WriteLine($"{convertFromInt} Pound are {(double)convertFromInt * 453.592} Gram.");
                         break;
                     default:
-                        Stone();
+                        Pound();
                         break;
                 }
             }
@@ -641,17 +641,122 @@
 
         void Ounce()
         {
+            Console.WriteLine("Into what do you want to Convert?(st, lb, kg, g)");
+            convertTo = Console.ReadLine();
 
+            while (tryAgain)
+            {
+                switch (convertTo)
+                {
+                    case "st":
+                        tryAgain = false;
+                        Console.Write("Ounces: ");
+                        convertFromInt = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"{convertFromInt} Ounces are {(double)convertFromInt / 224} Stone.");
+                        break;
+                    case "lb":
+                        tryAgain = false;
+                        Console.Write("Ounces: ");
+                        convertFromInt = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"{convertFromInt} Ounces are {(double)convertFromInt / 16} Pounds.");
+                        break;
+                    case "kg":
+                        tryAgain = false;
+                        Console.Write("Ounces: ");
+                        convertFromInt = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"{convertFromInt} Ounces are {(double)convertFromInt * 0.0283495} Kilogram.");
+                        break;
+                    case "g":
+                        tryAgain = false;
+                        Console.Write("Ounces: ");
+                        convertFromInt = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"{convertFromInt} Ounces are {(double)convertFromInt * 28.3495} Gram.");
+                        break;
+                    default:
+                        Ounce();
+                        break;
+                }
+            }
         }
 
         void Kilogram()
         {
+            Console.WriteLine("Into what do you want to Convert?(st, lb, oz, g)");
+            convertTo = Console.ReadLine();
 
+            while (tryAgain)
+            {
+                switch (convertTo)
+                {
+                    case "st":
+                        tryAgain = false;
+                        Console.Write("Kilogram: ");
+                        convertFromInt = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"{convertFromInt} Kilogram are {(double)convertFromInt / 6.35029} Stone.");
+                        break;
+                    case "lb":
+                        tryAgain = false;
+                        Console.Write("Kilogram: ");
+                        convertFromInt = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"{convertFromInt} Kilogram are {(double)convertFromInt * 2.20462} Pounds.");
+                        break;
+                    case "oz":
+                        tryAgain = false;
+                        Console.Write("Kilogram: ");
+                        convertFromInt = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"{convertFromInt} Kilogram are {(double)convertFromInt * 35.27396} Ounces.");
+                        break;
+                    case "g":
+                        tryAgain = false;
+                        Console.Write("Kilogram: ");
+                        convertFromInt = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"{convertFromInt} Kilogram are {(double)convertFromInt * 1000} Gram.");
+                        break;
+                    default:
+                        Kilogram();
+                        break;
+                }
+            }
         }
 
         void Gram()
         {
+            Console.WriteLine("Into what do you want to Convert?(st, lb, oz, kg)");
+            convertTo = Console.ReadLine();
 
+            while (tryAgain)
+            {
+                switch (convertTo)
+                {
+                    case "st":
+                        tryAgain = false;
+                        Console.Write("Gram: ");
+                        convertFromInt = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"{convertFromInt} Gram are {(double)convertFromInt / 6350.29} Stone.");
+                        break;
+                    case "lb":
+                        tryAgain = false;
+                        Console.Write("Gram: ");
+                        convertFromInt = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"{convertFromInt} Gram are {(double)convertFromInt / 453.592} Pounds.");
+                        break;
+                    case "oz":
+                        tryAgain = false;
+                        Console.Write("Gram: ");
+                        convertFromInt = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"{convertFromInt} Gram are {(double)convertFromInt / 28.3495} Ounces.");
+                        break;
+                    case "kg":
+                        tryAgain = false;
+                        Console.Write("Gram: ");
+                        convertFromInt = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine($"{convertFromInt} Gram are {(double)convertFromInt / 1000} kilogram.");
+                        break;
+                    default:
+                        Gram();
+                        break;
+                }
+            }
         }
     }
 }
